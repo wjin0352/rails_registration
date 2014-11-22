@@ -1,9 +1,8 @@
 <h1>Register Here!</h1>
-
 <div>
   <% if flash[:status] == TRUE %>
     <p><%= flash[:alert] %></p>
-    <%= elsif flash[:status] == FALSE %>
+    <% elsif flash[:status] == FALSE %>
     <% flash[:alert].each do |error| %>
         <p><%= error %></p>
     <% end %>
