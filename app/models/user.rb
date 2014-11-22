@@ -27,7 +27,7 @@ require 'digest/md5'
     self.password = Digest::MD5.hexdigest(password)
   end
 
-  def self.validate_login(name, password)
+  def self.validate_login(name,password)
     user = User.find_by_name(name)
     if user && user.password == Digest::MD5.hexdigest(password)
       user
