@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   resources :users
 
   # get 'users/index'
@@ -10,7 +12,10 @@ Rails.application.routes.draw do
   # we add match case so when user registers on our url bar it will go to users new action
   match '/register' => 'users#new', via: [:get, :post]
 
-  # you can have the root of site routed with "root"
+  resources :sessions, :only => [:new, :create, :destroy]
+  match 'login' => 'session#new', via: [:get, :post]
+  match 'logout' => 'sessions#destroy', via: [:get, :post]
+
   root 'users#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
